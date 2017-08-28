@@ -1,6 +1,13 @@
 ## React-Music-Player
+
+
+### 一、简介
+基于React实现的音乐播放器，技术栈 react + react-router + webpack + sessionStorage；基本动图见下面：
+
 ![首页](/pic.gif)
-### 如何执行
+
+### 二、如何执行
+
 ####  1、将项目克隆到本地，cd到react-redux-todolist
 ```javascript
 git clone git@github.com:chenjun1127/react-music-player.git
