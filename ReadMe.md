@@ -8,7 +8,7 @@
 
 ### 二、如何执行
 
-####  1、将项目克隆到本地，cd到react-redux-todolist
+####  1、将项目克隆到本地，cd 到 react-music-player
 ```javascript
 git clone git@github.com:chenjun1127/react-music-player.git
 cd react-music-player
