@@ -2,7 +2,7 @@
 
 
 ### 一、简介
-基于React实现的音乐播放器，技术栈 react + react-router + webpack + sessionStorage；基本动图见下面：
+基于React实现的音乐播放器，技术栈 react + react-router + webpack + sessionStorage + sass + es6；基本动图见下面：
 
 ![首页](/pic.gif)
 
