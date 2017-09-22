@@ -7,7 +7,7 @@ export default class extends Component {
         const {currentIndex, songlist} = this.props.location.state;
         const list = songlist.map((item, i) => {
             return (
-                <li key={item.singerid} onClick={() => {
+                <li key={i} onClick={() => {
                     this.props.history.replace('/');
                     sessionStorage.setItem('index', i);
                 }} className={parseFloat(currentIndex) === i ? 'active_li' : ''}>{item.songname} -- {item.singername}</li>
