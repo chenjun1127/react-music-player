@@ -25,3 +25,5 @@ npm start
 // npm run build(打包)
 ```
 #### 4、打开浏览器浏览 http://localhost:3000/
+
+#### 5、完美版本：https://github.com/chenjun1127/react-music
