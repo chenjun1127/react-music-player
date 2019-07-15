@@ -1,6 +1,4 @@
 @import "reset.css";
-@import "_tools.scss";
-@import "_flex.scss";
 
 $color: #333;
 $grayColor: #888;
@@ -15,15 +13,33 @@ html, body {
     height: 100vh;
 }
 
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
 #app {
     height: 100%;
 }
 
+.flex-box{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
 .components-container {
-    @include flexbox;
-    @include justify-content(flex-start);
-    @include align-items(center);
-    @include flexDirection(column);
+    @extend .flex-box;
+    flex-direction: column;
     width: 100%;
     height: 100%;
 }
@@ -35,9 +51,7 @@ html, body {
     background: $white;
     border-bottom: 1px solid $lineColor;
     font-weight: bold;
-    @include flexbox;
-    @include justify-content(flex-start);
-    @include align-items(center);
+    @extend .flex-box;
     img {
         width: 40px;
         padding: 10px;
@@ -45,27 +59,24 @@ html, body {
     h1 {
         font-weight: normal;
         font-size: $fontSize*1.5;
-        @include flex(1);
+        display:flex;
+        flex:1;
     }
 }
 
 /****** head end ******/
 .components-box {
-    @include flexbox;
-    @include justify-content(flex-start);
-    @include align-items(center);
-    @include flexDirection(column);
+    @extend .flex-box;
+    flex-direction: column;
     width: 100%;
-    @include flex(1);
+    felx:1;
     .components-player {
         width: 100%;
         padding: 0 20px;
-        @include boxSizing;
-        @include flexbox;
-        @include justify-content(flex-start);
-        @include align-items(center);
-        @include flexDirection(column);
-        @include flex(1);
+        box-sizing: border-box;
+        @extend .flex-box;
+        flex-direction: column;
+        flex:1;
     }
 
     .links {
@@ -76,13 +87,13 @@ html, body {
     }
 
     .components-album {
-        @include horizontal-center;
+        margin:0 auto;
         border-radius: 50%;
         background: rgba(250, 250, 250, 0.7);
         width: 15rem;
         height: 15rem;
         padding: 5px;
-        @include box-shadow(0, 0, 10px, rgba(0, 0, 0, 0.4));
+        box-shadow:0, 0, 10px, rgba(0, 0, 0, 0.4);
         .ablum-pic {
             border-radius: 50%;
             width: 100%;
@@ -124,9 +135,8 @@ html, body {
 
 .player-time {
     font-family: 'PingFang SC';
-    @include flexbox;
-    @include justify-content(center);
-    @include align-items(center);
+    @extend .flex-box;
+    justify-content:center; 
     .time_left {
         padding-top: 10px;
         padding-right: 10px;
@@ -137,7 +147,8 @@ html, body {
         text-align: right;
     }
     .player-range {
-        @include flex(1);
+        display:flex;
+        flex:1;
     }
 }
 
@@ -189,9 +200,7 @@ html, body {
         }
     }
     ul li {
-        @include flexbox;
-        @include justify-content(flex-start);
-        @include align-items(center);
+        @extend .flex-box;
         padding: 0.8rem;
         border-top: 1px solid $lineColor;
     }
@@ -201,9 +210,8 @@ html, body {
 }
 
 .loading {
-    @include flex(1);
-    @include justify-content(center);
-    @include align-items(center);
-    @include flexDirection(column);
-    @include flexbox;
+    @extend .flex-box;
+    justify-content:center;
+    flex:1;
+    flex-direction: column;
 }

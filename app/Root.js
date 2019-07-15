@@ -6,9 +6,9 @@ import {HashRouter} from 'react-router-dom';
 import Header from './containers/Header';
 import Player from './containers/Player';
 import './style/main';
+import { hot } from 'react-hot-loader/root';
 
-
-export default class extends Component {
+class Root extends Component {
     render() {
         return (
             <div className="components-container">
@@ -20,3 +20,5 @@ export default class extends Component {
         )
     }
 }
+
+export default hot(Root);

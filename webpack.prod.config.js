@@ -1,22 +1,27 @@
 const path = require('path');
 const webpack = require('webpack');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // 自动生成build文件夹及文件：
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    devtool: 'eval-source-map',
-    mode: 'development',
+    // devtool: 'eval-source-map',
+    mode: 'production',
     entry: {
         app: './app/index.js'
     },
     output: {
         path: path.resolve('dist'),
-        filename: '[name].js',
+        filename: 'js/[name].[hash:5].js',
     },
     resolve: {
         extensions: [".js", ".json", ".jsx", ".css", ".scss"],
-        alias: {
-            'react-dom': '@hot-loader/react-dom'
+    },
+    optimization: {
+        minimize: true,
+        splitChunks: {
+            // include all types of chunks
+            chunks: 'all'
         }
     },
     module: {
@@ -42,19 +47,23 @@ module.exports = {
             use: {
                 loader: 'file-loader',
             }
+        }, {
+            test: /\.json$/,
+            loader: 'json-loader'
         }]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        // webpack 内置的 banner-plugin
+        new webpack.BannerPlugin("Copyright by https://github.com/chenjun1127"),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
+            'process.env.NODE_ENV': JSON.stringify('production')
         }),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'react-music-player',
+            title: 'test',
             template: './templates/index.html',
             filename: 'index.html',
             inject: 'body'
-        }),
-        new OpenBrowserPlugin({ url: 'http://localhost:3000' })
+        })
     ]
 }
